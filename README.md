@@ -35,5 +35,5 @@ I used two slightly different "client_autotest.py" to test performance of both o
 
   **In theory, two models should have same performance in terms of correctly predicting the class, further experimenting should easily prove this
   
-To avoid confusion, I've added postfix to two different cleint_autotest.py, they are now "client_autotest_vanilla.py" and "client_autotest_my.py".
-As their name suggest, the first is automated test for model trained by vanilla retrain.py, second is for otherwise.
+To avoid confusion, I've added postfix to two different client_autotest.py, they are now "client_autotest_vanilla.py" and "client_autotest_my.py".
+As their names suggest, the first is automated test for model trained by vanilla retrain.py, second is for otherwise.
