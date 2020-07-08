@@ -4,7 +4,7 @@ retrain image classifier with tensorflow hub trained module
 
 ### Usage : 
 
-1. trian classifier with command like :   `python retrain.py --image_dir ~/retrain/flower_photos --saved_model_dir ~/retrain_jpeg/saved`
+1. trian classifier with command like : <p>`python retrain.py --image_dir ~/retrain/flower_photos --saved_model_dir ~/retrain_jpeg/saved`
 
 
 1. after training the classifier, cd to **"saved_model_dir"** provided in args above
