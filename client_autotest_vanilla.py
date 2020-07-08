@@ -19,9 +19,11 @@ def main():
     walk = list(os.walk(BASE_DIR))
     class_list = sorted(walk[0][1])
     correct_pred = 0
+    cv2_decode_time = 0
     total_time = 0
     lowest_time = 10000
     highest_time = 0
+    req_size = 0
     for i in range(TEST_AMOUNT):
         randnum = rand.randint(0,100000)
         folder = BASE_DIR + '/' + class_list[randnum % len(class_list)]
@@ -40,6 +42,9 @@ def main():
             i = i.astype(np.float32)
             predict_request = {"inputs": {"image": i.tolist()}}
             tosend = json.dumps(predict_request)
+            req_size += len(tosend)
+            end = time.time()
+            cv2_decode_time += (end-start)
             response = requests.post(SERVER_URL, data=tosend)
             response.raise_for_status()
             end = time.time()
@@ -57,9 +62,12 @@ def main():
             # else:
                 # print('incorrect!','pred =',class_list[np.argmax(res,axis=1).item()],'answer =',class_list[randnum % len(class_list)])
     print('percentage of correct prediction :',correct_pred/TEST_AMOUNT)
-    print('avg inference time :',total_time/TEST_AMOUNT)
-    print('lowest :',lowest_time)
-    print('highest :',highest_time)
+    print('average image preprocess time :',cv2_decode_time/TEST_AMOUNT)
+    print('average inference time :',(total_time - cv2_decode_time)/TEST_AMOUNT)
+    print('avg total time :', total_time / TEST_AMOUNT)
+    print('lowest total time :',lowest_time)
+    print('highest total time :',highest_time)
+    print('average request packet size (MB) :',req_size/(TEST_AMOUNT*1024*1024))
 
 
 
