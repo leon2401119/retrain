@@ -22,21 +22,21 @@ retrain image classifier with tensorflow hub trained module
 Did some testing with models trained by "vanilla" retrain.py and my implemenation of retaian.py (trained with same set of data)
 I used two slightly different "client_autotest.py" to test performance of both of them, and the resluts are listed below:
 
-  For "vanilla" retrained model : (input is decoded JPEG, so we need to decode JPEG first in order to send it to server for inference)
+  For "vanilla" retrained model : (input is **decoded JPEG**, so we need to decode JPEG first in order to send it to server for inference)
   
     percentage of correct prediction : 0.882
     avg inference time : 0.2736836004257202
     lowest : 0.18077421188354492
     highest : 0.6768004894256592
     
-  For my implementation of retrained model : (input is undecoded JPEG string, decoding is done within the served model)
+  For my implementation of retrained model : (input is **undecoded JPEG** string, decoding is done **within** the served model)
   
     percentage of correct prediction : 0.86
     avg inference time : 0.06731470036506652
     lowest : 0.053359031677246094
     highest : 0.12958669662475586
 
-  **In theory, two models should have same performance in terms of correctly predicting the class, further experimenting should easily prove this**
+  **_In theory, two models should have same performance in terms of correctly predicting the class, further experimenting should easily prove this_**
   
 To avoid confusion, I've added postfix to two different client_autotest.py, they are now "client_autotest_vanilla.py" and "client_autotest_my.py".
 As their names suggest, the first is automated test for model trained by vanilla retrain.py, second is for otherwise.
