@@ -4,7 +4,9 @@ retrain image classifier with tensorflow hub trained module
 
 ### Usage : 
 
-1. trian classifier with command like : `python retrain.py --image_dir ~/retrain/flower_photos --saved_model_dir ~/retrain_jpeg/saved`
+1. trian classifier with command like : ```
+python retrain.py --image_dir ~/retrain/flower_photos --saved_model_dir ~/retrain_jpeg/saved```
+
 
 1. after training the classifier, cd to **"saved_model_dir"** provided in args above
 
@@ -16,7 +18,7 @@ retrain image classifier with tensorflow hub trained module
 
 ### Edit :
 
-Did some testing with models trained by "vanilla" retrain.py and my implemenation of retrian.py (trained with same set of data)
+Did some testing with models trained by "vanilla" retrain.py and my implemenation of retaian.py (trained with same set of data)
 I used two slightly different "client_autotest.py" to test performance of both of them, and the resluts are listed below:
 
   For "vanilla" retrained model : (input is decoded JPEG, so we need to decode JPEG first in order to send it to server for inference)
