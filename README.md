@@ -6,11 +6,11 @@ retrain image classifier with tensorflow hub trained module
 
 1. trian classifier with command like : `python retrain.py --image_dir ~/retrain/flower_photos --saved_model_dir ~/retrain_jpeg/saved`
 
-1. after training the classifier, cd to "saved_model_dir" provided in args above
+1. after training the classifier, cd to *"saved_model_dir"* provided in args above
 
-1. tensorflow serving deployment can be done with command such as : "sudo docker run -d -p 8500:8500 --name mynet --mount type=bind,source=/home/yangck/retrain_jpeg/saved,target=/models/mynet/1 -e MODEL_NAME=mynet -ti tensorflow/serving"
+1. tensorflow serving deployment can be done with command such as : `sudo docker run -d -p 8500:8500 --name mynet --mount type=bind,source=/home/yangck/retrain_jpeg/saved,target=/models/mynet/1 -e MODEL_NAME=mynet -ti tensorflow/serving`
 
-1. use client.py to send inference request to server
+1. use *client.py* to send inference request to server
 
 
 
