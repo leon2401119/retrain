@@ -24,17 +24,24 @@ I used two slightly different "client_autotest.py" to test performance of both o
 
   For "vanilla" retrained model : (input is **decoded JPEG**, so we need to decode JPEG first in order to send it to server for inference)
   
-    percentage of correct prediction : 0.882
-    avg inference time : 0.2736836004257202
-    lowest : 0.18077421188354492
-    highest : 0.6768004894256592
+    percentage of correct prediction : 0.885
+    average image preprocess time : 0.18765224123001098
+    average inference time : 0.081202321767807
+    avg total time : 0.268854562997818
+    lowest total time : 0.18206572532653809
+    highest total time : 0.29784584045410156
+    average request packet size (MB) : 5.2418908548355105
     
   For my implementation of retrained model : (input is **undecoded JPEG** string, decoding is done **within** the served model)
   
-    percentage of correct prediction : 0.86
-    avg inference time : 0.06731470036506652
-    lowest : 0.053359031677246094
-    highest : 0.12958669662475586
+    percentage of correct prediction : 0.892
+    average image preprocess time : 0.0006006615161895752
+    average inference time : 0.06417909717559814
+    avg total time : 0.06477975869178772
+    lowest total time : 0.054444313049316406
+    highest total time : 0.08815765380859375
+    average request packet size (MB) : 0.08179362106323242
+
 
 **_In theory, two models should have same performance in terms of correctly predicting the class, further experimenting should easily prove this_**
   
