@@ -22,6 +22,8 @@ retrain image classifier with tensorflow hub trained module
 Did some testing with models trained by "vanilla" retrain.py and my implemenation of retaian.py (trained with same set of data)
 I used two slightly different "client_autotest.py" to test performance of both of them, and the resluts are listed below:
 
+  Results are calculated by randoming sampling 1000 test images (`TEST_AMOUNT = 1000`), and averaging the numbers
+
   For "vanilla" retrained model : (input is **decoded JPEG**, so we need to decode JPEG first in order to send it to server for inference)
   
     percentage of correct prediction : 0.885
