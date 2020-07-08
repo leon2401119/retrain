@@ -43,6 +43,9 @@ I used two slightly different "client_autotest.py" to test performance of both o
     lowest total time : 0.054444313049316406
     highest total time : 0.08815765380859375
     average request packet size (MB) : 0.08179362106323242
+    
+    
+  Note : Propagation time for request/response packets are included in "average inference time" since after call to `requests.post(SERVER_URL, data = tosend)` everything is handled by tensorflow serving API, thus impossible to be timed seperately.
 
 
 **_In theory, two models should have same performance in terms of correctly predicting the class, further experimenting should easily prove this_**
