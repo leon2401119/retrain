@@ -18,6 +18,8 @@ def main():
     walk = list(os.walk(BASE_DIR))
     class_list = sorted(walk[0][1])
     correct_pred = 0
+    req_size = 0
+    image_read_time = 0
     total_time = 0
     lowest_time = 10000
     highest_time = 0
@@ -34,6 +36,9 @@ def main():
             jpeg_bytes = jpeg_bytes.decode('utf-8')
             predict_request = {"inputs" : {"image" : {"b64": jpeg_bytes}}}
             tosend = json.dumps(predict_request)
+            req_size += len(tosend)
+            end = time.time()
+            image_read_time += (end-start)
             response = requests.post(SERVER_URL, data = tosend)
             end = time.time()
             # print('elapsed time :',end-start)
@@ -51,10 +56,12 @@ def main():
             # else:
                 # print('incorrect!','pred =',class_list[np.argmax(res,axis=1).item()],'answer =',class_list[randnum % len(class_list)])
     print('percentage of correct prediction :',correct_pred/TEST_AMOUNT)
-    print('avg inference time :',total_time/TEST_AMOUNT)
-    print('lowest :',lowest_time)
-    print('highest :',highest_time)
-
+    print('average image preprocess time :',image_read_time/TEST_AMOUNT)
+    print('average inference time :',(total_time - image_read_time)/TEST_AMOUNT)
+    print('avg total time :',total_time/TEST_AMOUNT)
+    print('lowest total time :',lowest_time)
+    print('highest total time :',highest_time)
+    print('average request packet size (MB) :', req_size / (TEST_AMOUNT * 1024 * 1024))
 
 
 if __name__ == '__main__':
