@@ -50,3 +50,22 @@ I used two slightly different "client_autotest.py" to test performance of both o
   
 To avoid confusion, I've added postfix to two different "client_autotest.py", they are now "**client_autotest_vanilla.py**" and "**client_autotest_my.py**".
 As their names suggest, the first is automated test for model trained by vanilla retrain.py, second is for otherwise.
+
+
+### Edit2 :
+When we want to make an inference request to the tensorflow serving api, we can either use
+1. RESTful API
+1. gRPC API <br>
+
+A well documented experiment shows that **sending string with gRPC** can acheive the best performance amongst sending string with REST or sending nparray with gRPC/REST.
+![proof](https://miro.medium.com/max/696/1*pb3j1x-JitaAwDgm2HmP_w.png,"mypic")<br>
+As a consequence, I made a client with gRPC formatted request "clinet_grpc.py" and here are the results:
+
+    percentage of correct prediction : 0.895
+    average image preprocess time : 0.00015198373794555664
+    average inference time : 0.0628689262866974
+    avg total time : 0.06302091002464294
+    lowest total time : 0.051235198974609375
+    highest total time : 0.1358652114868164
+
+As it turned out, no significant increase in both avg. inference time and avg. total time can be spotted.
