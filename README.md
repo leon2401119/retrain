@@ -58,7 +58,7 @@ When we want to make an inference request to the tensorflow serving api, we can 
 1. gRPC API <br>
 
 A well documented experiment shows that **sending string with gRPC** can acheive the best performance amongst sending string with REST or sending nparray with gRPC/REST.
-![proof](https://miro.medium.com/max/696/1*pb3j1x-JitaAwDgm2HmP_w.png,"mypic")<br>
+<br>proof : <https://miro.medium.com/max/696/1*pb3j1x-JitaAwDgm2HmP_w.png><br>
 As a consequence, I made a client with gRPC formatted request "clinet_grpc.py" and here are the results:
 
     percentage of correct prediction : 0.895
